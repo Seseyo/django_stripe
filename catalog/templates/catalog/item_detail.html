@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Title: {{ item.name }}</h1>
+
+    <p><strong>Description:</strong> {{ item.description }}</p>
+    <p><strong>Price:</strong> {{ item.price }}</p>
+
+    <section class="section">
+        <div class="container">
+            <button class="button is-primary" id="submitBtn">Purchase!</button>
+        </div>
+    </section>
+
+{% endblock %}
