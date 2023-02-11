@@ -1,0 +1,25 @@
+version: '2.1'
+
+services:
+  web:
+    container_name: web
+    build: ./project
+    volumes:
+      - ./project:/usr/src
+    networks:
+      - my_net
+    ports:
+      - 8000:8000
+    environment:
+      - APP_HOST=http://localhost:8000/catalog/
+    entrypoint: >
+      sh -c "
+        echo 'Starting django app...' &&
+        echo 'Listening port 8000' &&
+        python3 manage.py runserver 0.0.0.0:8000
+      "
+
+
+networks:
+  my_net:
+    name: my_net

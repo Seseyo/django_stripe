@@ -1,0 +1,4 @@
+.dockerignore
+Dockerfile
+.envrc
+__pycache__
