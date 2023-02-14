@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path
 from . import views
 
 
@@ -10,6 +10,6 @@ urlpatterns = [
     re_path(r'^buy/(?P<pk>\d+)$', views.create_checkout_session),
     re_path(r'^success/$', views.SuccessView.as_view(), name='success'),
     re_path(r'^cancelled/$', views.CancelledView.as_view(), name='cancelled'),
-
+    re_path(r'^webhook/$', views.stripe_webhook)
 
 ]

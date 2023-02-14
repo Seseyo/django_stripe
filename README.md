@@ -1,1 +1,23 @@
-Django stripe project
+# Django stripe project
+
+## Проект опубликован по адресу: 
+http://cy22230.tw1.ru/
+
+## Запуск при помощи docker
+
+- Клонируем проект к себе с github
+- Если нужно, в файле .env меняем переменную WEB_PORT (по умолчанию 8000)
+- Находясь в корневом каталоге, где лежит файл docker-compose.yml , выполняем команду:
+docker-compose up -d --build
+- сервис доступен по адресу http://localhost:WEB_PORT
+
+## Обычный запуск локально
+
+- Клонируем проект к себе с github
+- Находясь в корневом каталоге, выполняем в терминале команду:
+python3 project/manage.py runserver 
+
+## Доступ к админ-панели осуществляется добавлением к урл /admin
+
+- Например http://cy22230.tw1.ru/admin
+- Логин/пароль: admin/admin
