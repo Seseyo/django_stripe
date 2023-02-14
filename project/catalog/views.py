@@ -14,10 +14,6 @@ class ItemListView(generic.ListView):
     model = Item
 
 
-class ItemDetailView(generic.DetailView):
-    model = Item
-
-
 class SuccessView(TemplateView):
     template_name = 'success.html'
 
@@ -63,7 +59,7 @@ def stripe_config(request):
 def create_checkout_session(request, pk):
     current_item = Item.objects.get(pk=pk)
     if request.method == 'GET':
-        domain_url = 'http://localhost:8000/catalog/'  # need use environment variable
+        domain_url = settings.DEV_SITE_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
@@ -80,7 +76,6 @@ def create_checkout_session(request, pk):
                             'product_data': {
                                 'name': current_item.name,
                                 'description': current_item.description,
-                            #    'images': ['https://example.com/t-shirt.png'],
                             },
                         },
                         'quantity': 1,
