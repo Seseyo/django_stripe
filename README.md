@@ -8,7 +8,7 @@ http://cy22230.tw1.ru/
 - Клонируем проект к себе с github
 - Если нужно, в файле .env меняем переменную WEB_PORT (по умолчанию 8000)
 - Находясь в корневом каталоге, где лежит файл docker-compose.yml , выполняем команду:
-docker-compose up -d --build
+**docker-compose up -d --build**
 - сервис доступен по адресу http://localhost:WEB_PORT
 
 ## Обычный запуск локально
