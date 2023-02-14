@@ -38,14 +38,17 @@ def index(request):
 
 def item_detail_view(request, pk):
     try:
-        item_id = Item.objects.get(pk=pk)
+        current_item = Item.objects.get(pk=pk)
+        price = str(current_item.price)
+        item_price = f"{price[0:-2]}.{price[-2:]}"
+
     except Item.DoesNotExist:
         raise Http404("Book does not exist")
 
     return render(
         request,
         'catalog/item_detail.html',
-        context={'item': item_id}
+        context={'item': current_item, 'item_price': item_price}
     )
 
 
@@ -59,7 +62,6 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request, pk):
     current_item = Item.objects.get(pk=pk)
-    print(f"THIS IS ITEM: {current_item.name} , {current_item.description}, {current_item.price}")
     if request.method == 'GET':
         domain_url = 'http://localhost:8000/catalog/'  # need use environment variable
         stripe.api_key = settings.STRIPE_SECRET_KEY
